@@ -1,8 +1,8 @@
 import uuid
 import streamlit as st
-import utils
 from dotenv import load_dotenv
-from langchain.schema import Document
+
+import utils
 
 load_dotenv()
 
@@ -23,13 +23,14 @@ def main():
     submit = st.button("Analisar Curriculos 📄")
     if submit:
         with st.spinner("Analisando... "):
-            st.write("Nosso processo")
-            #Creating a unique ID, so that we can use to query and get only the user uploade
+            st.write("No processo")
+            #Creating a unique ID, so that we can use to query and get only the user uploads
             st.session_state['unique_id'] = uuid.uuid4().hex
 
             #Create a documents list out od all the user uploaded pdf files
             docs = utils.create_docs(pdfs, st.session_state['unique_id'])
             # st.write(docs)
+            st.success("Documentos recuperados!")
 
             #Displaying the count of resumes that have been upload
             st.write(f"Documentos a processar:{len(docs)}")
@@ -39,16 +40,16 @@ def main():
 
             #Create vectorstore
             vectorstore = utils.get_vectorstore(docs, embeddings)
+            st.success("Analisando documentos!")
             
             # Fetch relevant documents from vectorstore
             relevant_docs = utils.similar_docs(job_description, document_count, vectorstore, st.session_state['unique_id'])
-            # st.write("Resposta:")
             # st.write(relevant_docs)
 
             #Introducing a line separator
             st.write(":heavy_minus_sign:"*30)
 
-            #For each relavant doc - display some info 
+            #For each relevant doc - display some info 
             for item in range(len(relevant_docs)):
                 st.subheader("👉 "+ str(item+1))
                 st.write("**Ficheiro** : "+relevant_docs[item][0].metadata['name'])
