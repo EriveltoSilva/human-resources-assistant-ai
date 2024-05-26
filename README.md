@@ -60,7 +60,7 @@ pip install -r requirements.txt
 streamlit run main.py
 ```
 
-<h2 id="#results">🤝 Results</h2>
+<h2 id="results">🤝 Results</h2>
 
 <p align="center">
     <img src="./assets/images/rh-assistant1.PNG" alt="Image Example" />
@@ -78,7 +78,7 @@ streamlit run main.py
     <img src="./assets/images/rh-assistant4.PNG" alt="Image Example" />
 </p>
 
-<h2 id="#projectVideo">🤝 Project Video</h2>
+<h2 id="projectVideo">▶ Project Video</h2>
 
 <a href="https://www.linkedin.com/posts/erivelto-da-costa-e-silva_recursoshumanos-triagemdecurraedculos-automaaexaeto-activity-7199593163492114432-PmJF?utm_source=share&utm_medium=member_desktop">
 See a short video of how project works on my LinkedIn
